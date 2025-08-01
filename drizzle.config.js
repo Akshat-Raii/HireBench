@@ -5,6 +5,6 @@ export default defineConfig({
   schema: "./utils/schema.ts",
   // out: "./drizzle", // Optional output directory for generated SQL files
   dbCredentials: {
-    url: 'postgresql://neondb_owner:npg_Tpfcr80OaCAu@ep-cold-tree-a1z2tk0l-pooler.ap-southeast-1.aws.neon.tech/HireBench?sslmode=require&channel_binding=require'
+    url: process.env.NEXT_PUBLIC_DRIZZLE_DB_URL,
   }
 });
