@@ -1,4 +1,4 @@
-# HireBench 
+# HireBench ![Logo](logo.png)
 
 An AI-powered platform to help you practice for your next big interview. Create customized interviews, get instant AI-driven feedback, and track your progress over time.
 
