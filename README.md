@@ -40,7 +40,7 @@ This project was built using the following major technologies:
 - **Frontend:** Next.js, React, TypeScript, Tailwind CSS  
 - **Backend:** Drizzle ORM, PostgreSQL  
 - **Database:** Neon (serverless PostgreSQL)  
-- **AI/ML:** OpenAI API, custom prompt engineering  
+- **AI/ML:** Gemini API, custom prompt engineering  
 - **Authentication:** Clerk  
 - **Speech & Vision:** react-hook-speech-to-text, react-webcam  
 - **Deployment:** Vercel  
