@@ -35,13 +35,16 @@ Preparing for technical interviews can be challenging. HireBench provides a real
 
 ## Built With 💻
 
-This section should list all the major frameworks, libraries, and technologies you used to build your project.
+This project was built using the following major technologies:
 
-* **Frontend:** (e.g., React, Vue, Angular)
-* **Backend:** (e.g., Node.js, Express.js, Python, Django)
-* **Database:** (e.g., MongoDB, PostgreSQL, MySQL)
-* **AI/ML:** (e.g., Gemini, OpenAI API)
-* **Deployment:** (e.g., Vercel, Netlify, AWS, Heroku)
+- **Frontend:** Next.js, React, TypeScript, Tailwind CSS  
+- **Backend:** Drizzle ORM, PostgreSQL  
+- **Database:** Neon (serverless PostgreSQL)  
+- **AI/ML:** OpenAI API, custom prompt engineering  
+- **Authentication:** Clerk  
+- **Speech & Vision:** react-hook-speech-to-text, react-webcam  
+- **Deployment:** Vercel  
+- **Other Tools:** Lucide Icons, Framer Motion, shadcn/ui
 
 ---
 
@@ -80,7 +83,7 @@ List any software and tools that need to be installed before a user can run your
     ```
 5.  **Run the development server:**
     ```sh
-    npm start
+    npm run dev
     ```
 
 ---
