@@ -7,8 +7,9 @@ import Webcam from 'react-webcam';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const Interview = ({ params }: { params: { interviewId: string } }) => {
-    const interviewId = params.interviewId;
+const Interview = ({ params }: { params: Promise<{ interviewId: string }> }) => {
+    const resolvedParams = React.use(params);
+    const interviewId = resolvedParams.interviewId;
     const [interview, setInterview] = useState<any>(null);
     const [webCamEnabled, setWebCamEnabled] = useState(false);
 

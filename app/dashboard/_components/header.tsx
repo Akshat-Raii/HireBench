@@ -25,7 +25,7 @@ const Header = () => {
     ];
 
     // A more robust way to check for the active path
-    const isActive = (href) => path === href;
+    const isActive = (href: string) => path === href;
 
     return (
         <header className='relative flex items-center justify-between p-4 px-6 bg-white shadow-sm border-b'>

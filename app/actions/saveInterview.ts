@@ -25,7 +25,7 @@ export async function saveMockInterview({
         mockId: uuidv4(),
         jobPosition,
         jobDesc,
-        jobExperience,
+        jobExperience: jobExperience.toString(),
         createdBy: email,
         createdAt: moment().format("DD-MM-YYYY"),
         jsonMockResp,

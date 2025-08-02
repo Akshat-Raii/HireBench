@@ -5,9 +5,20 @@ import InterviewItemCard from "./InterviewItemCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getInterviewListByEmail } from "@/utils/getInterviewList";
 
+interface Interview {
+  id: number;
+  jsonMockResp: string;
+  jobPosition: string;
+  jobDesc: string;
+  jobExperience: string;
+  createdBy: string;
+  createdAt: string | null;
+  mockId: string;
+}
+
 const InterviewList = () => {
   const { user } = useUser();
-  const [interviewList, setInterviewList] = useState(null); // Initialize as null for loading state
+  const [interviewList, setInterviewList] = useState<Interview[] | null>(null); // Initialize as null for loading state
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,10 +29,11 @@ const InterviewList = () => {
 
   const GetInterviewList = async () => {
     setLoading(true);
-    const result = await getInterviewListByEmail(
-      user?.primaryEmailAddress?.emailAddress
-    );
-    setInterviewList(result);
+    const emailAddress = user?.primaryEmailAddress?.emailAddress;
+    if (emailAddress) {
+      const result = await getInterviewListByEmail(emailAddress);
+      setInterviewList(result);
+    }
     setLoading(false);
   };
 

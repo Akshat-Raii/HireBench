@@ -8,7 +8,7 @@ async function main(prompt: string): Promise<string> {
     contents: [{ role: "user", parts: [{ text: prompt }] }],
   });
 
-  const text = response.text;
+  const text = response.text || '';
   return text;
 }
 

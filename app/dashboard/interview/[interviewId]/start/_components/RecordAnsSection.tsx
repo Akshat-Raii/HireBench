@@ -10,7 +10,22 @@ import moment from 'moment';
 import { main } from '@/utils/aimodel';
 import { saveAnswerToDB } from '@/utils/saveAnswerToDb';
 
-const RecordAnsSection = ({ mockInterviewQuestion, activeQuestionIndex, interviewData }) => {
+interface Question {
+  question: string;
+  answer: string;
+}
+
+interface InterviewData {
+  mockId: string;
+}
+
+interface RecordAnsSectionProps {
+  mockInterviewQuestion: Question[];
+  activeQuestionIndex: number;
+  interviewData: InterviewData;
+}
+
+const RecordAnsSection = ({ mockInterviewQuestion, activeQuestionIndex, interviewData }: RecordAnsSectionProps) => {
   const [userAnswer, setUserAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
@@ -29,7 +44,7 @@ const RecordAnsSection = ({ mockInterviewQuestion, activeQuestionIndex, intervie
   });
 
   useEffect(() => {
-    const fullTranscript = results.map(r => r.transcript).join(' ');
+    const fullTranscript = results.map(r => typeof r === 'string' ? r : r.transcript).join(' ');
     setUserAnswer(fullTranscript);
 
     if (!isRecording && fullTranscript.length > 0) {
@@ -42,7 +57,7 @@ const RecordAnsSection = ({ mockInterviewQuestion, activeQuestionIndex, intervie
       stopSpeechToText();
 
       setTimeout(async () => {
-        const finalTranscript = results.map(r => r.transcript).join(' ').trim();
+        const finalTranscript = results.map(r => typeof r === 'string' ? r : r.transcript).join(' ').trim();
 
         if (finalTranscript.length < 10) {
           toast("Error: Answer too short. Try again.");
@@ -58,7 +73,7 @@ const RecordAnsSection = ({ mockInterviewQuestion, activeQuestionIndex, intervie
     }
   };
 
-  const updateUserAnswer = async (answer) => {
+  const updateUserAnswer = async (answer: string) => {
     console.log("Saving user answer:", answer);
     setLoading(true);
 

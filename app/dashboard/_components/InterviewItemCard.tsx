@@ -3,7 +3,18 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 import { Calendar, Star, MessageSquare } from 'lucide-react';
 
-const InterviewItemCard = ({ interview }) => {
+interface Interview {
+  mockId: string;
+  jobPosition: string;
+  jobExperience: string;
+  createdAt: string | null;
+}
+
+interface InterviewItemCardProps {
+  interview: Interview;
+}
+
+const InterviewItemCard = ({ interview }: InterviewItemCardProps) => {
     const router = useRouter();
 
     const onFeedback = () => {

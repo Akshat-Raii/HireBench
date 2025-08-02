@@ -270,21 +270,21 @@ const QuestionsPage = () => {
         });
     }, [selectedCategory, selectedDifficulty, searchTerm]);
 
-    const DifficultyBadge = ({ difficulty }) => {
-        const colors = {
+    const DifficultyBadge = ({ difficulty }: { difficulty: string }) => {
+        const colors: { [key: string]: string } = {
             Easy: 'bg-green-100 text-green-700',
             Medium: 'bg-yellow-100 text-yellow-700',
             Hard: 'bg-red-100 text-red-700',
         };
-        return <span className={`text-xs font-semibold px-2 py-1 rounded-full ${colors[difficulty]}`}>{difficulty}</span>
+        return <span className={`text-xs font-semibold px-2 py-1 rounded-full ${colors[difficulty] || 'bg-gray-100 text-gray-700'}`}>{difficulty}</span>
     };
 
-    const CategoryIcon = ({ category }) => {
-        const icons = {
+    const CategoryIcon = ({ category }: { category: string }) => {
+        const icons: { [key: string]: React.ReactElement } = {
             Technical: <Laptop className="h-4 w-4" />,
             Behavioral: <Users className="h-4 w-4" />,
         };
-        return <span className="mr-2">{icons[category]}</span>;
+        return <span className="mr-2">{icons[category] || null}</span>;
     }
 
     return (

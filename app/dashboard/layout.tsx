@@ -1,7 +1,11 @@
 import React from 'react'
 import Header from './_components/header'
 
-const DashboardLayout = ({children}) => {
+interface DashboardLayoutProps {
+  children: React.ReactNode;
+}
+
+const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div>
         <Header/>

@@ -2,10 +2,19 @@ import { Lightbulb, Volume2, VolumeX, ChevronLeft, ChevronRight } from 'lucide-r
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex }) => {
+interface Question {
+  question: string;
+}
+
+interface QuestionsSectionProps {
+  mockInterviewQuestion: Question[];
+  activeQuestionIndex: number;
+}
+
+const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex }: QuestionsSectionProps) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const textToSpeech = (text) => {
+  const textToSpeech = (text: string) => {
     if ('speechSynthesis' in window) {
       if (isSpeaking) {
         window.speechSynthesis.cancel();
