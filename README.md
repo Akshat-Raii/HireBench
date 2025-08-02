@@ -4,7 +4,7 @@ An AI-powered platform to help you practice for your next big interview. Create 
 
 ### Live Demo 🚀
 
-**[HireBench](hirebench.vercel.app)**
+**[HireBench](https://hirebench.vercel.app)**
 
 ---
 
