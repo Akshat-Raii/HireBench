@@ -1,29 +1,64 @@
-import React from 'react'
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
+import { Calendar, Star, MessageSquare } from 'lucide-react';
 
-const InterviewItemCard = ({interview}) => {
+const InterviewItemCard = ({ interview }) => {
+    const router = useRouter();
 
-    const router = useRouter()
-    const onStart = ()=>{
-        router.push("/dashboard/interview/"+interview?.mockId)
-    }
-    const onFeedback = ()=>{
-        router.push("/dashboard/interview/"+interview?.mockId+"/feedback")
-    }
-  return (
-    <div className="border border-gray-500 shadow-sm rounded-lg p-3" >
-        <h2 className='font-bold text-primary' >{interview?.jobPosition}</h2>
-        <h2 className='text-sm text-gray-600' >{interview?.jobExperience} Years of experience</h2>
-        <h2 className="text-xs text-gray-400" >Created At:{interview.createdAt}</h2>
+    const onFeedback = () => {
+        router.push("/dashboard/interview/" + interview?.mockId + "/feedback");
+    };
 
-        <div className='flex justify-between mt-2 gap-5 ' >
-            <Button onClick={onFeedback} size="sm"  className="w-full" >Feedback</Button>
-            <Button onClick={onStart} size="sm"  className="w-full">Start</Button>
+    // Format date for better readability, with a fallback
+    const formattedDate = interview?.createdAt 
+        ? new Date(interview.createdAt).toLocaleDateString("en-US", {
+            year: 'numeric', month: 'short', day: 'numeric'
+          })
+        : 'N/A';
+
+    return (
+        <div className="border shadow-sm rounded-xl p-5 bg-white transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col h-full">
+            {/* Main content area */}
+            <div className="flex-grow">
+                <div className="flex justify-between items-start mb-3">
+                    <div>
+                        <h2 className='font-bold text-lg text-primary'>{interview?.jobPosition}</h2>
+                        <h3 className='text-sm text-gray-600'>{interview?.jobExperience} Years of experience</h3>
+                    </div>
+                    {/* Status Badge */}
+                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200">
+                        Completed
+                    </span>
+                </div>
+
+                <div className="flex justify-between items-center text-sm text-gray-500">
+                    {/* Date */}
+                    <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        <span>Created {formattedDate}</span>
+                    </div>
+                    {/* Rating */}
+                    <div className="flex items-center gap-1 text-yellow-500">
+                        <Star className="h-4 w-4 fill-current" />
+                        <span className="font-semibold text-gray-700">4.5</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Button at the bottom */}
+            <div className='mt-5'>
+                <Button
+                    onClick={onFeedback}
+                    variant="outline"
+                    className="flex items-center gap-2 w-full bg-gray-50 hover:bg-gray-100 text-gray-800 border-gray-300"
+                >
+                    <MessageSquare className="h-4 w-4" />
+                    Feedback
+                </Button>
+            </div>
         </div>
-    </div>
+    );
+};
 
-  )
-}
-
-export default InterviewItemCard
+export default InterviewItemCard;

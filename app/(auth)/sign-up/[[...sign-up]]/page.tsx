@@ -31,7 +31,7 @@ export default function Page() {
             {/* Right Side - Login */}
             <div className="w-1/2 flex items-center justify-center bg-white">
                 <div className="w-full max-w-md p-8 space-y-6 border rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-center text-gray-800">Login</h2>
+                <h2 className="text-3xl font-bold text-center text-gray-800">Sign Up</h2>
                 <SignUp/>
                 </div>
             </div>

@@ -1,20 +1,27 @@
-import { UserButton } from '@clerk/nextjs'
 import React from 'react'
 import AddNewInterview from './_components/AddNewInterview'
 import InterviewList from './_components/InterviewList'
 
 const Dashboard = () => {
   return (
-    <div className='p-10'>
-        <h2 className='font-bold text-2xl'>Dashboard</h2>
-        <h2 className='text-gray-500'>Create and Start your AI Interview</h2>
-        <div className='grid grid-cols-1 md:grid-cols-3'>
+    <div className='p-6 md:p-10'>
+        {/* Header */}
+        <div className='mb-8'>
+            <h2 className='font-bold text-3xl'>Dashboard</h2>
+            <p className='text-gray-500'>Create and Start your AI Interview</p>
+        </div>
+
+        {/* Add New Interview Card */}
+        <div className='mb-12'> {/* Increased spacing */}
             <AddNewInterview/>
         </div>
+
         {/* Previous Interview List */}
-        <InterviewList/>
+        <div>
+            <InterviewList/>
+        </div>
     </div>
   )
 }
 
-export default Dashboard
+export default Dashboard;
